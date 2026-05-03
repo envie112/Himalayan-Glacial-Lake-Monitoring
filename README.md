@@ -148,7 +148,7 @@ Glacial-Lake-Monitoring/
 │   ├── ndwi_baseline.png                 ← NDWI baseline results
 │   └── data_exploration.png              ← Dataset samples
 │
-├── best_unet.pt                          ← Trained model weights
+├── best_unet.pt                          ← Trained model weights (download from Kaggle output)
 ├── requirements.txt
 └── README.md
 ```
