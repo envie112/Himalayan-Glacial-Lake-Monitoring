@@ -3,7 +3,7 @@
 
 An end-to-end deep learning pipeline that detects and monitors glacial lake expansion in the Himalayas using ESA Sentinel-2 satellite imagery — from raw satellite data to a fully interactive georeferenced map showing 5 years of lake area change.
 
-[![Open in Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com)
+[![Open in Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/ramya18145/glacial-lake)
 
 ---
 
