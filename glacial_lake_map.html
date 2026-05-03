@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c0e2a035a87b75f9d59dbd505d3b004b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 40px; left: 40px; z-index: 1000;
+     background: white; padding: 12px 16px; border-radius: 8px;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.3); font-family: Arial; font-size: 13px;">
+    <b>🏔️ Lake Expansion Rate</b><br><br>
+    <span style="color:#d32f2f">●</span> High expansion (>15%)<br>
+    <span style="color:#f57c00">●</span> Moderate expansion (5–15%)<br>
+    <span style="color:#388e3c">●</span> Stable (&lt;5%)<br><br>
+    <small>Marker size ∝ lake area in 2024<br>
+    Model: U-Net on Sentinel-2 | 2019–2024</small>
+</div>
+    
+            <div class="folium-map" id="map_c0e2a035a87b75f9d59dbd505d3b004b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c0e2a035a87b75f9d59dbd505d3b004b = L.map(
+                "map_c0e2a035a87b75f9d59dbd505d3b004b",
+                {
+                    center: [28.0, 87.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cba9cb9cc6f321a73073a2693d243828 = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=s\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google Satellite",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_cba9cb9cc6f321a73073a2693d243828.addTo(map_c0e2a035a87b75f9d59dbd505d3b004b);
+        
+    
+            var tile_layer_1adc91d80f072fd3afb822c7ce738f8c = L.tileLayer(
+                "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CorrectedReflectance_TrueColor/default/2024-01-01/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "NASA GIBS",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 0.6,
+}
+
+            );
+        
+    
+            tile_layer_1adc91d80f072fd3afb822c7ce738f8c.addTo(map_c0e2a035a87b75f9d59dbd505d3b004b);
+        
+    
+            var circle_marker_0340b68286c21c3a47e493e6e3b3849f = L.circleMarker(
+                [27.897, 86.928],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28.541761304274694, "stroke": true, "weight": 2}
+            ).addTo(map_c0e2a035a87b75f9d59dbd505d3b004b);
+        
+    
+        var popup_124857d2cb1a19340659e1f426717b7c = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_b040e02b80443741df4c51011473d33f = $(`<div id="html_b040e02b80443741df4c51011473d33f" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; min-width: 220px;'>         <h4 style='color: #1565C0; margin-bottom: 8px;'>🏔️ Imja Tsho, Nepal</h4>         <table style='width:100%; border-collapse: collapse;'>             <tr style='background:#f5f5f5'><th style='padding:4px; text-align:left'>Year</th><th style='padding:4px; text-align:right'>Area (km²)</th></tr>             <tr><td style='padding:4px'>2019</td><td style='padding:4px; text-align:right'>0.000</td></tr><tr><td style='padding:4px'>2021</td><td style='padding:4px; text-align:right'>0.000</td></tr><tr><td style='padding:4px'>2023</td><td style='padding:4px; text-align:right'>0.000</td></tr><tr><td style='padding:4px'>2024</td><td style='padding:4px; text-align:right'>1.903</td></tr>         </table>         <div style='margin-top: 10px; padding: 6px; background: #ffebee; border-radius: 4px;'>             <b>Total change (2019→2024):</b> +inf%<br>             <b>Area gained:</b> +1.903 km²         </div>     </div>     </div>`)[0];
+                popup_124857d2cb1a19340659e1f426717b7c.setContent(html_b040e02b80443741df4c51011473d33f);
+            
+        
+
+        circle_marker_0340b68286c21c3a47e493e6e3b3849f.bindPopup(popup_124857d2cb1a19340659e1f426717b7c)
+        ;
+
+        
+    
+    
+            circle_marker_0340b68286c21c3a47e493e6e3b3849f.bindTooltip(
+                `<div>
+                     Imja Tsho, Nepal | +inf% since 2019
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4d5405b3faeee7a033cfcb9d01481bc3 = L.circleMarker(
+                [28.046, 89.978],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.52577315530037, "stroke": true, "weight": 2}
+            ).addTo(map_c0e2a035a87b75f9d59dbd505d3b004b);
+        
+    
+        var popup_f2a6de80fd168c7039968b582eb86617 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_dfc2ea51345a91537ff335f1603be2aa = $(`<div id="html_dfc2ea51345a91537ff335f1603be2aa" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; min-width: 220px;'>         <h4 style='color: #1565C0; margin-bottom: 8px;'>🏔️ Thorthormi, Bhutan</h4>         <table style='width:100%; border-collapse: collapse;'>             <tr style='background:#f5f5f5'><th style='padding:4px; text-align:left'>Year</th><th style='padding:4px; text-align:right'>Area (km²)</th></tr>             <tr><td style='padding:4px'>2019</td><td style='padding:4px; text-align:right'>0.033</td></tr><tr><td style='padding:4px'>2021</td><td style='padding:4px; text-align:right'>0.035</td></tr><tr><td style='padding:4px'>2023</td><td style='padding:4px; text-align:right'>0.031</td></tr><tr><td style='padding:4px'>2024</td><td style='padding:4px; text-align:right'>0.768</td></tr>         </table>         <div style='margin-top: 10px; padding: 6px; background: #ffebee; border-radius: 4px;'>             <b>Total change (2019→2024):</b> +2248.1%<br>             <b>Area gained:</b> +0.736 km²         </div>     </div>     </div>`)[0];
+                popup_f2a6de80fd168c7039968b582eb86617.setContent(html_dfc2ea51345a91537ff335f1603be2aa);
+            
+        
+
+        circle_marker_4d5405b3faeee7a033cfcb9d01481bc3.bindPopup(popup_f2a6de80fd168c7039968b582eb86617)
+        ;
+
+        
+    
+    
+            circle_marker_4d5405b3faeee7a033cfcb9d01481bc3.bindTooltip(
+                `<div>
+                     Thorthormi, Bhutan | +2248.1% since 2019
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2146631048c36d87c79cf0fbe3979e42 = L.circleMarker(
+                [28.219, 87.039],
+                {"bubblingMouseEvents": true, "color": "#388e3c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#388e3c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 2}
+            ).addTo(map_c0e2a035a87b75f9d59dbd505d3b004b);
+        
+    
+        var popup_0ec40eaa7d25f6bb246d3568c7df7435 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3204769dfd0a92eaae72fce13c713bdf = $(`<div id="html_3204769dfd0a92eaae72fce13c713bdf" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; min-width: 220px;'>         <h4 style='color: #1565C0; margin-bottom: 8px;'>🏔️ Longbasaba, Tibet</h4>         <table style='width:100%; border-collapse: collapse;'>             <tr style='background:#f5f5f5'><th style='padding:4px; text-align:left'>Year</th><th style='padding:4px; text-align:right'>Area (km²)</th></tr>             <tr><td style='padding:4px'>2019</td><td style='padding:4px; text-align:right'>0.718</td></tr><tr><td style='padding:4px'>2021</td><td style='padding:4px; text-align:right'>0.853</td></tr><tr><td style='padding:4px'>2023</td><td style='padding:4px; text-align:right'>0.606</td></tr><tr><td style='padding:4px'>2024</td><td style='padding:4px; text-align:right'>0.314</td></tr>         </table>         <div style='margin-top: 10px; padding: 6px; background: #e8f5e9; border-radius: 4px;'>             <b>Total change (2019→2024):</b> -56.3%<br>             <b>Area gained:</b> -0.404 km²         </div>     </div>     </div>`)[0];
+                popup_0ec40eaa7d25f6bb246d3568c7df7435.setContent(html_3204769dfd0a92eaae72fce13c713bdf);
+            
+        
+
+        circle_marker_2146631048c36d87c79cf0fbe3979e42.bindPopup(popup_0ec40eaa7d25f6bb246d3568c7df7435)
+        ;
+
+        
+    
+    
+            circle_marker_2146631048c36d87c79cf0fbe3979e42.bindTooltip(
+                `<div>
+                     Longbasaba, Tibet | -56.3% since 2019
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_ebe1a7d990be87b21d6c9ae147d869ab_layers = {
+                base_layers : {
+                    "https://mt1.google.com/vt/lyrs=s\u0026x={x}\u0026y={y}\u0026z={z}" : tile_layer_cba9cb9cc6f321a73073a2693d243828,
+                },
+                overlays :  {
+                    "NASA MODIS True Color" : tile_layer_1adc91d80f072fd3afb822c7ce738f8c,
+                },
+            };
+            let layer_control_ebe1a7d990be87b21d6c9ae147d869ab = L.control.layers(
+                layer_control_ebe1a7d990be87b21d6c9ae147d869ab_layers.base_layers,
+                layer_control_ebe1a7d990be87b21d6c9ae147d869ab_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_c0e2a035a87b75f9d59dbd505d3b004b);
+
+        
+</script>
+</html>
