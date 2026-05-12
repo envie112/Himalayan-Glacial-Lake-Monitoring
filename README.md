@@ -28,7 +28,7 @@ Manually monitoring thousands of lakes across High Mountain Asia is impractical.
 
 U-Net achieves **IoU of 0.9437** — research-grade performance for semantic segmentation. The slight recall drop vs NDWI is expected: NDWI over-detects water by flagging snow and ice as false positives, inflating its recall artificially. U-Net learns the actual shape of lakes rather than any bright-in-green, dark-in-NIR pixel.
 
-![Evaluation Comparison](assets/evaluation_comparison.png)
+![Evaluation Comparison](results/evaluation_comparison.png)
 
 ### Lake Area Change (2019–2024)
 
@@ -134,12 +134,11 @@ Results are exported to an interactive Folium map (`results/glacial_lake_map.htm
 ```
 Glacial-Lake-Monitoring/
 │
-├── notebooks/
-│   └── glacial_lake_monitoring.ipynb     ← Full pipeline notebook
+├── glacial_lake_monitoring.ipynb        ← Full pipeline notebook
 │
 ├── results/
-│   ├── glacial_lake_map.html             ← Interactive Folium map (open in browser)
-│   ├── area_change_trends.png            ← Lake area 2019–2024
+│   ├── glacial_lake_map.html            ← Interactive Folium map (open in browser)
+│   ├── area_change_trends.png           ← Lake area 2019–2024
 │   └── results_summary.png              ← Combined results figure
 │
 ├── assets/
