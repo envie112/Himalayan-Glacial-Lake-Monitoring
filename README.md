@@ -123,7 +123,7 @@ Results are exported to an interactive Folium map (`results/glacial_lake_map.htm
 ## Limitations
 
 - **Imja Tsho and Thorthormi** show near-zero area in 2019–2023 — likely caused by persistent cloud cover in those years preventing clean GEE composites rather than actual lake absence. The 2024 values are reliable.
-- **Longbasaba** area decrease may reflect cloud masking artifacts or genuine seasonal variation — published literature shows this lake has been growing, suggesting further temporal investigation is needed.
+- **Longbasaba** shows apparent area decrease from 2021 to 2024, which contradicts published literature documenting consistent long-term growth of this lake since 2000. This is likely a GEE composite artifact — persistent cloud cover or seasonal snow at high altitude can partially obscure lake boundaries even after cloud filtering, causing underestimation. Alternatively, inter-year differences in image acquisition timing within the June-September window may reflect seasonal variation rather than true long-term change. This highlights a key limitation of optical satellite data in high-altitude terrain and motivates future work using SAR (Synthetic Aperture Radar) imagery, which penetrates clouds entirely.
 - Pixel-to-km² conversion uses a flat-Earth approximation; DEM-corrected area computation would be more precise for steep terrain.
 - Model trained on lakes across Nepal, China, and Pakistan — generalization to other mountain ranges (Andes, Alps) may require fine-tuning.
 
